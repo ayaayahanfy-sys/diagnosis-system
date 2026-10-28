@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم الصحية - نظام تشخيصي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('images/ai.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* الهيدر العلوي */
+        .navbar {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .user-info-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            background: #00e5ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0f172a;
+            font-weight: bold;
+        }
+
+        /* حاوية المحتوى */
+        .dashboard-container {
+            padding: 40px 50px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .main-panel,
+        .side-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* الكروت الزجاجية */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .welcome-card {
+            background: linear-gradient(45deg, rgba(0, 163, 218, 0.2), rgba(0, 229, 255, 0.1));
+            border: 1px solid rgba(0, 229, 255, 0.3);
+        }
+
+        .welcome-card h1 {
+            margin: 0;
+            color: #00e5ff;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .stat-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-item span {
+            display: block;
+            font-size: 12px;
+            color: #cbd5e1;
+        }
+
+        .stat-item strong {
+            font-size: 18px;
+            color: #57c1ff;
+        }
+
+        /* سجل الفحوصات */
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .history-item:last-child {
+            border: none;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            background: rgba(0, 229, 255, 0.2);
+            color: #00e5ff;
+        }
+
+        /* أزرار سريعة */
+        .quick-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .action-btn {
+            padding: 15px;
+            border-radius: 15px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Cairo';
+            font-weight: bold;
+            transition: 0.3s;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-blue {
+            background: #00e5ff;
+            color: #0f172a;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #57c1ff;
+            color: #57c1ff;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 229, 255, 0.3);
+        }
+
+        @media (max-width: 900px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div style="font-weight: bold; font-size: 20px; color: #00e5ff;">DiagnostiX AI</div>
+        <div class="user-info-top">
+            <span id="userNameTop">المستخدم</span>
+            <div class="user-avatar" id="userInitial">U</div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="main-panel">
+            <div class="glass-card welcome-card">
+                <h1>أهلاً، <span id="helloName">سارة</span>! 👋</h1>
+                <p>حالتك الصحية مستقرة اليوم. قمتِ بإجراء آخر فحص منذ يومين.</p>
+                <div class="stats-grid">
+                    <div class="stat-item"><span>فصيلة الدم</span><strong>O+</strong></div>
+                    <div class="stat-item"><span>العمر</span><strong>24 عام</strong></div>
+                    <div class="stat-item"><span>الطول</span><strong>165 سم</strong></div>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <h3>📜 آخر التقارير الطبية</h3>
+                <div id="historyList">
+                    <div class="history-item">
+                        <div>
+                            <strong>فحص إنفلونزا استدلالي</strong><br>
+                            <small style="color: #94a3b8;">27 أبريل 2026</small>
+                        </div>
+                        <span class="status-badge">مكتمل</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="side-panel">
+            <div class="glass-card">
+                <h3>🚀 إجراء سريع</h3>
+                <div class="quick-actions">
+                    <a href="diagnosis.html" class="action-btn btn-blue">ابدأ فحص جديد</a>
+                    <a href="tips.html" class="action-btn btn-outline">تصفح النصائح</a>
+                    <button onclick="logout()" class="action-btn"
+                        style="background: rgba(255, 71, 71, 0.1); color: #ff4747; margin-top: 20px;">تسجيل
+                        الخروج</button>
+                </div>
+            </div>
+
+            <div class="glass-card" style="text-align: center;">
+                <h4 style="color: #57c1ff;">مؤشر الصحة العام</h4>
+                <div style="font-size: 40px; margin: 10px 0;">85%</div>
+                <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                    <div style="width: 85%; height: 100%; background: #00e5ff; border-radius: 10px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // كود لربط البيانات الحقيقية
+        window.onload = function () {
+            // جلب النتيجة من الفحص الأخير لو موجودة
+            const lastReport = localStorage.getItem('finalDiagnosis');
+            if (lastReport) {
+                const historyList = document.getElementById('historyList');
+                const newItem = document.createElement('div');
+                newItem.className = 'history-item';
+                newItem.innerHTML = `
+                    <div>
+                        <strong>تحليل أعراض مخصص</strong><br>
+                        <small style="color: #94a3b8;">اليوم</small>
+                    </div>
+                    <span class="status-badge">جديد</span>
+                `;
+                historyList.prepend(newItem);
+            }
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+
+</html>

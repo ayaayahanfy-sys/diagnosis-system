@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>النتائج والنصائح الطبية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('images/ai.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 90%;
+            max-width: 650px;
+            text-align: center;
+        }
+
+        .diagnosis-display-box {
+            background: rgba(0, 229, 255, 0.1);
+            border-right: 5px solid #00e5ff;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: right;
+            display: none;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        h2 {
+            color: #57c1ff;
+            margin-bottom: 25px;
+        }
+
+        .diagnosis-display-box h4 {
+            color: #00e5ff;
+            margin: 0 0 10px 0;
+            font-size: 20px;
+        }
+
+        .diagnosis-display-box p {
+            font-size: 18px;
+            margin: 0;
+            line-height: 1.6;
+            color: #fff;
+        }
+
+        .tip-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            text-align: right;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-home {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background: #00e5ff;
+            color: #0f172a;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-home:hover {
+            background: #57c1ff;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="result-card">
+        <h2 id="pageHeader">📋 التقرير والنصائح الطبية</h2>
+
+        <div id="diagnosisBox" class="diagnosis-display-box">
+            <h4>نتائج الفحص الاستدلالي:</h4>
+            <p id="resultContent"></p>
+        </div>
+
+        <h3 style="text-align: right; color: #cbd5e1;">نصائح الرعاية الصحية:</h3>
+        <div class="tip-item">✦ شرب لترين من الماء يومياً لتعزيز كفاءة الجسم.</div>
+        <div class="tip-item">✦ ممارسة رياضة خفيفة أو المشي لمدة 15 دقيقة.</div>
+        <div class="tip-item">✦ استشارة الطبيب المختص إذا استمرت الأعراض.</div>
+
+        <a href="index.html" class="btn-home">العودة للرئيسية</a>
+    </div>
+
+    <script>
+        window.onload = function () {
+            const report = localStorage.getItem('finalDiagnosis');
+            const box = document.getElementById('diagnosisBox');
+            const content = document.getElementById('resultContent');
+
+            if (report) {
+                box.style.display = "block";
+                content.innerText = report;
+            } else {
+                // لو داخل من زرار النصائح فقط
+                document.getElementById('pageHeader').innerText = "💡 نصائح طبية عامة";
+            }
+        }
+    </script>
+</body>
+
+</html>

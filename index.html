@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام تشخيصي الذكي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('images/ai.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-title {
+            font-size: 35px;
+            font-weight: bold;
+            color: #57c1ff;
+            margin-top: 40px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .banner-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 50px;
+            width: 90%;
+            max-width: 1100px;
+        }
+
+        .banner-left {
+            flex: 1;
+        }
+
+        .welcome-text {
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-card h3 {
+            color: #57c1ff;
+            margin-top: 0;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .info-card li {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+        }
+
+        .info-card li::before {
+            content: "✦";
+            color: #57c1ff;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 15px;
+            border-radius: 15px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: #00a3da;
+            color: white;
+            border: none;
+            animation: pulse 2s infinite;
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-tips {
+            grid-column: span 2;
+            /* يخلي زرار النصائح ياخد العرض كامل */
+            background: rgba(87, 193, 255, 0.1);
+            color: #57c1ff;
+            border: 1px dashed #57c1ff;
+        }
+
+        .btn:hover {
+            transform: scale(1.03);
+            background: rgba(87, 193, 255, 0.2);
+            border-color: #57c1ff;
+        }
+
+        /* كود حركة الـ DNA */
+        .ai-icon-container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 50%;
+            border: 2px dashed #57c1ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .ai-icon-container span {
+            display: inline-block;
+            animation: rotateDNA 10s linear infinite;
+        }
+
+        @keyframes rotateDNA {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 163, 218, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(0, 163, 218, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 163, 218, 0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .banner-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .button-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-tips {
+                grid-column: span 1;
+            }
+
+            .ai-icon-container {
+                order: -1;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-title">نظام تشخيصي الذكي</div>
+
+    <div class="banner-container">
+        <div class="banner-left">
+            <div class="welcome-text">مستقبل الرعاية الصحية بين يديك</div>
+
+            <div class="info-card">
+                <h3>خدماتنا الذكية</h3>
+                <ul>
+                    <li>تحليل فوري بالأشعة والذكاء الاصطناعي</li>
+                    <li>توصيات طبية دقيقة</li>
+                    <li>متابعة الحالة الصحية 24/7</li>
+                </ul>
+
+                <div class="button-grid">
+                    <a href="diagnosis.html" class="btn btn-primary">ابدأ التشخيص</a>
+                    <a href="login.html" class="btn btn-outline">تسجيل الدخول</a>
+                    <a href="tips.html" class="btn btn-tips">💡 النصائح الطبية الذكية</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="banner-right">
+            <div class="ai-icon-container">
+                <span style="font-size: 80px;">🧬</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

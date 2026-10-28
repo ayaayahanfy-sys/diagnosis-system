@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء ملف طبي جديد</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            /* الخلفية اللي بتسألي عليها - مربوطة بملف الصور عندك */
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('images/ai.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .register-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .register-card h2 {
+            color: #57c1ff;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            font-family: 'Cairo', sans-serif;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #57c1ff;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .row-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .btn-register {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 12px;
+            border: none;
+            background: #00e5ff;
+            /* اللون اللبني اللي في صورتك */
+            color: #0f172a;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-register:hover {
+            background: #57c1ff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 229, 255, 0.3);
+        }
+
+        .login-link {
+            margin-top: 20px;
+            display: block;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .login-link span {
+            color: #57c1ff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="register-card">
+        <h2>إنشاء ملف طبي جديد</h2>
+
+        <form action="dashboard.html">
+            <div class="form-group">
+                <label>الاسم بالكامل</label>
+                <input type="text" placeholder="مثلاً: سارة أحمد" required>
+            </div>
+
+            <div class="row-group">
+                <div class="form-group">
+                    <label>النوع</label>
+                    <select>
+                        <option>ذكر</option>
+                        <option>أنثى</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>السن</label>
+                    <input type="number" placeholder="20">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>فصيلة الدم</label>
+                <select>
+                    <option>A+</option>
+                    <option>B+</option>
+                    <option>O+</option>
+                    <option>AB+</option>
+                    <option>A-</option>
+                    <option>B-</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>البريد الإلكتروني</label>
+                <input type="email" placeholder="name@example.com">
+            </div>
+
+            <button type="submit" class="btn-register">حفظ البيانات</button>
+        </form>
+
+        <a href="login.html" class="login-link">لديك حساب بالفعل؟ <span>تسجيل الدخول</span></a>
+    </div>
+
+</body>
+
+</html>
